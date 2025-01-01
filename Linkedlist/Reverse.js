@@ -105,3 +105,6 @@ newlist.print(); // 10-->4-->3-->2-->1-->null
 console.log("After Removing the First Node:");
 newlist.removenode();
 newlist.print(); // 4-->3-->2-->1-->null
+
+
+

@@ -1,4 +1,4 @@
-// function capitalizeLastLetterOfWords(sentence) {
+function capitalizeLastLetterOfWords(sentence) {
 //     return sentence.split(' ').map(word => {
 //         if (word.length > 0) {
 //             const lastChar = word[word.length - 1].toUpperCase();  // Convert last char to uppercase
@@ -10,11 +10,3 @@
 // console.log(capitalizeLastLetterOfWords("hello world"));  // Output: "hellO worlD"
 // console.log(capitalizeLastLetterOfWords("javascript is fun"));  // Output: "javascripT is fuN"
 
-
-function capitalizeLastLetterOfWords(s){
-    return s.split(" ").map(word=>{
-        if(word.length>0){
-            
-        }
-    })
-}

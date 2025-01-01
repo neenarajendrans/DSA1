@@ -15,4 +15,8 @@ function search (a,t,l,r){
     }else{
        return search(a,t,mid+1,r)
     }
+
 }
+ let a = [2,3,4,24,53,322,43]
+ let t =53;
+console.log( BR(a,t))

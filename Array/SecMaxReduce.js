@@ -15,3 +15,4 @@ const [Largest,secondLargest] = array.reduce(([max1,max2],num)=>{
 }
   
 secMaxEven(a)
+

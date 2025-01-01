@@ -1,4 +1,4 @@
-
+//O(n)TS
 function findunique(arr){
  let map = new Map();
  for(let i=0; i <arr.length;i++){
