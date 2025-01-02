@@ -54,6 +54,7 @@ class Linkedlist {
         this.size++;
     }
 
+    
     // Remove a node at a given index
     removeindex(index) {
         if (!this.head) {
@@ -83,6 +84,37 @@ class Linkedlist {
         this.size--;
     }
 
+remove(value){
+    if(!this.head){
+        return null;
+    }
+    if(this.head.value === value){
+    this.head = this.head.next;
+    if(this.size === 1){
+        this.tail= null; 
+    }
+    this.size--;
+    }else{
+        let prev = this.head;
+        while(prev.next && prev.next.value !== value){
+            prev = prev.next;
+        }
+        if(prev.next){
+            let remove = prev.next;
+            prev.next = remove.next;
+            this.size--;
+            if(!prev.next.next){
+                this.tail = prev;
+            }
+        }else{
+            return console.log("value not found");
+            
+        }
+       
+    }
+
+}
+
     // Remove a node by value
     removevalue(value) {
         if (!this.head) {
@@ -106,7 +138,7 @@ class Linkedlist {
                 let remove = prev.next;
                 prev.next = remove.next;
 
-                if (!prev.next) { // Update tail if the last node was removed
+                if (!prev.next.next) { // Update tail if the last node was removed
                     this.tail = prev;
                 }
 

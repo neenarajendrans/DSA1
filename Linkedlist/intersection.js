@@ -56,7 +56,7 @@ function insection(list,long){
         }
         if(pointB === null){
             pointB = headA;
-        }else{
+        } else{
             pointB = pointB.next;
         }
     }

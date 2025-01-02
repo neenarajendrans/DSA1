@@ -14,7 +14,9 @@
 function capitalizeLastLetterOfWords(s){
     return s.split(" ").map(word=>{
         if(word.length>0){
-            
+            const lastChar = word[word.length-1].toUpperCase();
+            return word.slice(0,-1)+lastChar;
         }
-    })
+        return word;
+    }).join(' ')
 }

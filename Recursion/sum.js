@@ -6,3 +6,12 @@ function sumArray(arr, index = 0) {
 }
 console.log(sumArray([1, 2, 3, 4, 5]));  // Output: 15
 console.log(sumArray([10, 20, 30, 40]));  // Output: 100
+
+function sum(a,index=0){
+    if(index === a.length){
+        return 0;
+    }
+    return a[index] + sum(a,index+1)
+}
+
+console.log(sum([1, 2, 3, 4, 5]));
