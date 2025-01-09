@@ -71,28 +71,29 @@ list.print()
 list.prepend(4)
 list.print()
 
-class Queue{
+class Stack {
     constructor(){
-        this.list = new Linkedlist()
+        this.list = new Linkedlist();
     }
-    enqueue(value){
-        this.list.append(value)
+
+    push(value){
+        this.list.prepend(value)
     }
-    dequeue(){
+    pop(){
         this.list.removefromFront()
     }
-    peek(){
+    peek() {
         return this.list.head.value;
-    }
-    print(){
-        console.log(this.list)
-    }
+      }
+    
+      isEmpty() {
+        return this.list.isEmpty();
+      }
+    
+      getSize() {
+        return this.list.getSize();
+      }
+      print() {
+        return this.list.print();
+      }
 }
-
-let que = new Queue()
-que.enqueue(23);
-que.enqueue(24);
-que.enqueue(25);
-que.dequeue()
-que.print()
-

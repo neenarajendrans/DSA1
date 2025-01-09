@@ -53,6 +53,7 @@ class Linkedlist{
         }
         this.size++;
     }
+    
 
 //Insert a value at a given index
     insertAtIndex(value,index){
