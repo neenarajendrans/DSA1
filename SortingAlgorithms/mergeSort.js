@@ -22,3 +22,5 @@ function merge(leftArr, rightArr){
 
 const a = [1,3,5,6,7,0,67]
 console.log(mergeSort(a));
+//O(n logn )T
+// O(n)s

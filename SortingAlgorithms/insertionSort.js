@@ -21,3 +21,5 @@ function insertionSort (arr){
 let a = [-6, -8, -2 , 20, 49, 4, 6 ,0];
 console.log(insertionSort(a));
 //O(n^2)T 
+
+
