@@ -75,3 +75,9 @@ class HashTable {
     }
 
 }
+
+// Summary of Collision Resolution Methods:
+// Chaining: Store collided items in an array or linked list at each hash table index.
+// Linear Probing: Check the next index in a linear fashion.
+// Quadratic Probing: Check subsequent slots using quadratic increments.
+// Double Hashing: Use a secondary hash function to determine the step size when a collision occurs.
