@@ -45,36 +45,6 @@ htable.remove("place")
 htable.display()
 
 
-class HashTable {
-    constructor(size){
-        this.table = new HashTable(size);
-        this.size = size;
-    }
-
-    hash(key){
-        let total = 0;
-        for(let i = 0; i<key.length; i++){
-            total += key.charCodeAt(i)
-        }
-        return total % this.size;
-    }
-
-    set(key,value){
-        let index = hash(key);
-        const bucket  = this.table[index];
-        if(!bucket){
-            this.table[index] = [[key,value]]
-        }else{
-            let sameitem = bucket.find(item =>item[0]===key)
-            if(sameitem){
-                sameitem[1]= value;
-            }else{
-                bucket.push([key,value])
-            }
-        }
-    }
-
-}
 
 // Summary of Collision Resolution Methods:
 // Chaining: Store collided items in an array or linked list at each hash table index.
