@@ -49,3 +49,22 @@ function selectionSort(arr){
 
 const arr =[8,20,-2,4,-6]
 console.log(selectionSort(arr));
+
+function sel(a){
+    for(let i=0; i<a.length-1; i++){
+        let minI = i;
+        for(let j=i+1; j<a.length;j++){
+            if(a[j]<a[minI]){
+                minI = j
+            }
+
+        }
+        if(minI !== i){
+            let temp = a[j];
+            a[i] = a[minI];
+            a[minI]= temp;
+        }
+    }
+    return a;
+}
+console.log(sel(arr));

@@ -24,3 +24,25 @@ const a = [1,3,5,6,7,0,67]
 console.log(mergeSort(a));
 //O(n logn )T
 // O(n)s
+function mSort(a){
+    if(a.length<2){
+        return a;
+    }
+    const mid = Math.floor(a.length/2);
+    let leftA = a.slice(0,mid);
+    let rightA = a.slice(mid)
+    return(m(mSort(leftA),mSort(rightA)))
+}
+
+function m(l,r){
+    let sort = [];
+    while(l.length && r.length){
+        if(l[0]<r[0]){
+            sort.push(l.shift())
+        }else{
+            sort.push(r.shift())
+        }
+    }
+    return [...sort,...l,...r]
+}
+console.log(mSort(a));

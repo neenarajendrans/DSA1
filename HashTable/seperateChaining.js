@@ -134,4 +134,14 @@ class HashTableNew {
             }
         }
     }
+    re(key){
+      let index = this.hash(key);
+      let bucket = this.table[index];
+      if(bucket){
+        let samKey = bucket.find(item=>item[0]===key)
+        if(samKey){
+          bucket.splice(bucket.indexOf(samKeyItem),1)
+        }
+      }
+    }
 }

@@ -20,6 +20,18 @@ function insertionSort (arr){
 
 let a = [-6, -8, -2 , 20, 49, 4, 6 ,0];
 console.log(insertionSort(a));
-//O(n^2)T 
+//O(n^2)
 
-
+function insert(a){
+    for(let i=1;i<a.length; i++){a
+        let j= i-1;
+        let numbertoin = a[i]
+        while(j>=0 && a[j]>numbertoin){
+            a[j+1] = a[j]
+            j= j-1;
+        }
+        a[j+1]= numbertoin;
+    }
+    return a;
+}
+console.log(insert(a));
