@@ -39,23 +39,6 @@ class BinarySearchTree {
             }
         }
     }
-    insertNode(root,newNode){
-        if(newNode.value < root.value){
-            if(!root.left){
-                root.left = newNode;
-                return
-            }else{
-                this.insertNode(root.left,newNode)
-            }
-        }else{
-            if(!root.right){
-                root.right=newNode;
-                return
-            }else{
-                this.insertNode(root.right,newNode)
-            }
-        }
-    }
 
     // Search for a value in the BST
     search(value, node = this.root) {
@@ -68,6 +51,22 @@ class BinarySearchTree {
             return this.search(value, node.right);
         }
     }
+    // Level Order Traversal (BFS)
+levelOrder() {
+    if (!this.root) return; // If the tree is empty, return
+
+    const queue = [this.root]; // Initialize a queue with the root node
+
+    while (queue.length > 0) {
+        const node = queue.shift(); // Dequeue the front node
+        console.log(node.value); // Process the current node
+
+        // Enqueue the left and right children
+        if (node.left) queue.push(node.left);
+        if (node.right) queue.push(node.right);
+    }
+}
+
 
     // Inorder Traversal (Left -> Root -> Right)
     inorder(node = this.root) {
@@ -115,12 +114,6 @@ class BinarySearchTree {
         }
         return node.value;
     }
-    minNode(node){
-        while(node.left){
-            node=node.left;
-        }
-        return node;
-    }
 
     // Delete a node in the BST
     delete(value, node = this.root) {
@@ -132,7 +125,7 @@ class BinarySearchTree {
             node.right = this.delete(value, node.right);
         } else {
             // Node with only one child or no child
-            if (!node.left) return node.right;
+            if (!node.left) return node.right; //either null, or value
             if (!node.right) return node.left;
 
             // Node with two children: Get the inorder successor (smallest in the right subtree)
@@ -142,34 +135,66 @@ class BinarySearchTree {
 
         return node;
     }
-    isValidBST(root,min=-Infinity,max=Infinity){
-        if(!root) return true;
-      
-        if(root.value >= max || root.value <= min) return false
-    
+
+    delete(value,node = this.root){
+        if(!node)return null;
+        if(value<node.value){
+            node.left = this.delete(value,node.left)
+        }else if(value>node.value){
+            node.right = this.delete(value, node.right)
+        }else{
+            if(!node.left)return node.right;
+            if(!node.right)return node.left;
+
+            node.value = this.findMin(node.right);
+            node.right = this.delete(node.value,node.right)
+        }
+    }
+
+    // Check if the tree is a valid BST
+    isValidBST(root = this.root, min = -Infinity, max = Infinity) {
+        if (!root) return true;
+
+        if (root.value <= min || root.value >= max) return false;
+
         return (
-            this.isValidBST(root.left,min,root.value) &&
-            this.isValidBST(root.right,root.value,max)
+            this.isValidBST(root.left, min, root.value) &&
+            this.isValidBST(root.right, root.value, max)
+        );
+    }
+
+    isVali(root = this.root, min = -Infinity, max = Infinity){
+        if(!root)return true;
+        if(root.value<=min || root.value>=max)return false;
+        return (
+            this.isVali(root.left, min, root.value) &&
+            this.isVali(root.right, root.value,max)
         )
-     }
-    
-     isBalanced(root=this.root){
+    }
+
+    // Check if the tree is balanced
+    isBalanced(root = this.root) {
         return this.checkHeight(root) !== -1;
-     }
-    
-     checkHeight(node){
-        if(!node)return 0;
-    
-        let leftHeight = this.checkHeight(node.left);
-        if(leftHeight === -1) return -1
-        let rightHeight = this.checkHeight(node.right);
-        if(rightHeight === -1) return -1
-    
-        if(Math.abs(leftHeight - rightHeight)>0) return -1
-    
-        return Math.max(leftHeight,rightHeight)+1;
-    
-     }
+    }
+    isb(root = this.root){
+        return this.checkHeight(root) !== -1
+    }
+
+    checkHeight(node) {
+        if (!node) return 0;
+
+        const leftHeight = this.checkHeight(node.left);
+        if (leftHeight === -1) return -1;
+
+        const rightHeight = this.checkHeight(node.right);
+        if (rightHeight === -1) return -1;
+
+        if (Math.abs(leftHeight - rightHeight) > 1) return -1;
+
+        return Math.max(leftHeight, rightHeight) + 1;
+    }
+
+
 }
 
 // Example Usage
@@ -206,3 +231,9 @@ console.log("Maximum Value:", bst.findMax());
 bst.delete(50);
 console.log("Inorder Traversal after Deletion:");
 bst.inorder();
+
+// Check Valid BST
+console.log("Is Valid BST:", bst.isValidBST());
+
+// Check if Tree is Balanced
+console.log("Is Balanced:", bst.isBalanced());

@@ -79,7 +79,7 @@ class Graph {
             currentVertex = queue.shift();
             result.push(currentVertex);
             
-            for(let neighbor in this.adjacencyList[currentVertex]){
+            for(let neighbor of this.adjacencyList[currentVertex]){
                 if(!visited[neighbor]){
                     visited[neighbor]=true;
                     queue.push(neighbor);
@@ -101,7 +101,7 @@ class Graph {
             currentVertex=queue.pop();
             result.push(currentVertex);
             
-            for(let neighbor in this.adjacentList[currentVertex]){
+            for(let neighbor of this.adjacencyList[currentVertex]){
               if(!visited[neighbor]){
                   visited[neighbor]=true;
                   queue.push(neighbor);
@@ -125,3 +125,5 @@ console.log("Graph before deleting a vertex:");
 
 graph.deleteVertex("D")
 graph.display();
+console.log("BFS starting from A:", graph.bfs("A"));
+console.log("DFS starting from A:", graph.dfs("A")); 

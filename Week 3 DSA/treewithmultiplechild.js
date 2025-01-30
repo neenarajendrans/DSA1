@@ -9,19 +9,24 @@ class TreeNode {
     addChild(child) {
         this.children.push(child);
     }
-}
 
-// Define a function to display the tree structure
-function displayTree(node, indent = 0) {
-    console.log(`${' '.repeat(indent * 2)}- ${node.value}`); // Indentation for hierarchy
-
-    // Recursively display all children
-    for (const child of node.children) {
-        displayTree(child, indent + 1);
+    // Remove a child by value
+    removeChild(value) {
+        this.children = this.children.filter(child => child.value !== value);
     }
 }
 
-// Create the root of the tree
+// Simplified display function
+function displayTree(node) {
+    console.log(node.value); // Display the node value
+
+    // Display children, if any
+    for (const child of node.children) {
+        displayTree(child); // Recursive call for children
+    }
+}
+
+// Example usage
 const root = new TreeNode("Root");
 
 // Add children to the root node
@@ -43,4 +48,12 @@ child3.addChild(new TreeNode("Child 3.2"));
 child3.addChild(new TreeNode("Child 3.3"));
 
 // Display the tree structure
+console.log("Tree structure before removal:");
+displayTree(root);
+
+// Remove a node
+child3.removeChild("Child 3.2");
+
+// Display the tree structure after removal
+console.log("\nTree structure after removal:");
 displayTree(root);

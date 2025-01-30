@@ -15,7 +15,7 @@ function heapify(array, n, i) {
       [array[i], array[largest]] = [array[largest], array[i]];
       heapify(array, n, largest);
     }
-  }
+}
   
   function heapSort(array) {
     let n = array.length;
@@ -35,18 +35,6 @@ function heapify(array, n, i) {
   // Example usage:
   let array = [12, 11, 13, 5, 6, 7];
   console.log("Sorted array:", heapSort(array));  // Output: [5, 6, 7, 11, 12, 13]
-
-
-
-
-
-
-
-
-
-
-
-
 
 function minHeapify(array, n, i) {
     let smallest = i;
@@ -85,18 +73,6 @@ function minHeapify(array, n, i) {
   // Example usage:
   let array2 = [12, 11, 13, 5, 6, 7];
   console.log("Sorted array:", heapSortUsingMinHeap(array2));  // Output: [5, 6, 7, 11, 12, 13]
-
-
-
-
-
-
-
-
-
-
-
-
 
 function heapifyWithComparator(array, n, i, comparator) {
     let target = i;

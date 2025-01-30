@@ -103,7 +103,7 @@ class BT {
 
     getDeepestNode() {
         let queue = [this.root];
-        let node = null;
+        let node = null; // the node variable in which after the loop the deepest node is stored and it is intialized outside for getting the value outside the loop.
         while (queue.length > 0) {
             node = queue.shift();
             if (node.left) queue.push(node.left);
@@ -121,7 +121,7 @@ class BT {
                 return;
             } else if (current.left) {
                 queue.push(current.left);
-            }
+            } 
             if (current.right === deepestNode) {
                 current.right = null;
                 return;
@@ -130,7 +130,9 @@ class BT {
             }
         }
     }
-
+// Find the node to delete (targetNode) using BFS.
+// If found, replace its value with the deepest node's value.
+// Remove the deepest node from the tree.
     delete(value) {
         if (!this.root) return false;
         if (this.root.value === value && !this.root.left && !this.root.right) {
@@ -154,7 +156,7 @@ class BT {
             this.deleteDeepestNode(deepestNode);
         }
     }
-
+// min max,2nd,3rd
     findSecondMax() {
         if (!this.root) return null;
         let max = null;
