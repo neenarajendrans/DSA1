@@ -98,16 +98,6 @@ findmax(node= this.root){
     }
     return node.value;
 }
-delete(value, node= this.root){
-     if(!node)return null;
-     if(value<node.value){
-        node.left = this.delete(value, node.left)
-     }else if(value>node.value){
-            node.right = this.delete(value, node.right)
-    }else{
-        if(node.left) return node.right;
-        if()
-    }
-}
+
        
 }

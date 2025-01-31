@@ -136,6 +136,30 @@ levelOrder() {
         return node;
     }
 
+    delete(value,current = this.root){
+        // base case
+        if(!current){
+            return null;
+        }
+        // find value to be deleted
+        if(value<current.left){
+            current = this.delete(value, current.left)
+        }else if(value>current.right){
+            current = this.delete(value,current.right)
+        }else{
+
+        // if node has only one child or no child
+        if(!current.left) return current.right;
+        if(!current.right) return current.left;
+       
+        // if node has two child we choose smallest right child
+
+        current.value = this.findMin(current.right);
+        current.right = this.delete(current.value,current.right)
+    }
+    return current;
+    }
+
     delete(value,node = this.root){
         if(!node)return null;
         if(value<node.value){
@@ -194,7 +218,21 @@ levelOrder() {
         return Math.max(leftHeight, rightHeight) + 1;
     }
 
-
+    min(root) {
+        if (!root.left) {
+          return root.value;
+        } else {
+          return this.min(root.left);
+        }
+      }
+    
+      max(root) {
+        if (!root.right) {
+          return root.value;
+        } else {
+          return this.max(root.right);
+        }
+      }
 }
 
 // Example Usage

@@ -89,6 +89,8 @@ class MaxHeap {
       if (this.heap[index] < this.heap[largerIndex]) {
         this.swap(index, largerIndex);
         index = largerIndex;
+      }else{
+        break;
       }
     }
   }
@@ -113,3 +115,63 @@ console.log(maxHeap.remove());
 console.log(maxHeap.remove());
 console.log(maxHeap.remove());
 console.log(maxHeap.remove());
+
+
+class MaHeap{
+  constructor(){
+    this.heap = []
+  }
+  getP(index){
+    return Math.floor((index-1)/2)
+  }
+  getl(index){
+    return index*2 +1
+  }
+  getr(index){
+    return index*2 +2
+  }
+  insert(value){
+    this.heap.push(value);
+    heapifyUp1()
+  }
+  remove(){
+    if(this.heap.length ===0)return null;
+    if(this.heap.length ===1)return this.heap.pop();
+
+    let max = this.heap[0];
+    this.heap[0] =this.heap.pop();
+    heapifyDown1();
+    return max;
+  }
+  heapifyUp1(){
+    let index = this.heap.length -1;
+  while(index>0)
+    {let parentIndex = this.getP(index)
+  if(this.heap[parentIndex]<this.heap[index]){
+    swap(parentIndex, index);
+    index = parentIndex;
+  }else{
+    break
+  }}
+  }
+
+  heapifyDown1(){
+    let index = 0;
+    
+    let length = thi.heap.length;
+
+    while(this.getl(index)<length){
+      let left = this.getl(index);
+      let right = this.right(index);
+      let largest = left;
+
+      if(right< length && this.heap[right]>this.heap[largest]){
+        this.swap(right, largest)
+      }
+      if(this.heap[index ]<this.heap[largest]){
+        this.swap(index, largest)
+        index = largest;
+      }
+    }
+  }
+}
