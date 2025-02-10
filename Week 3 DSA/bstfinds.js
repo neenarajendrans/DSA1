@@ -66,6 +66,8 @@ class BST {
         return thirdMin;
     }
 
+    
+
     // Find the second maximum value
     findSecondMax(node = this.root) {
         let max = this.findMax(node);

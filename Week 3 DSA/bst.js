@@ -135,7 +135,24 @@ levelOrder() {
 
         return node;
     }
+d(value,current = this.root){
+    if(!current){
+        return null
+    }
 
+    if(value<current.value){
+        current.left = this.d(value, current.left)
+    }
+    else if(value<current.value){
+        current.right = this.d(value, current.right)
+    }else{
+        if(!current.left)return current.right;
+        if(!current.right)return current.left;
+
+        current.value = this.findMin(current.right);
+        current.right = this.d(current.value,current.right)
+    }
+}
     delete(value,current = this.root){
         // base case
         if(!current){
@@ -186,7 +203,17 @@ levelOrder() {
             this.isValidBST(root.right, root.value, max)
         );
     }
+    
+isV(root = this.root, min = Infinity, max = -Infinity){
+    if(!root)return true;
 
+    if(root.value<=min || root.value >=max)return false;
+
+    return(
+        this.isV(root.left,min,root.value) &&
+        this.isV(root.right, root.value,max)
+    )
+}
     isVali(root = this.root, min = -Infinity, max = Infinity){
         if(!root)return true;
         if(root.value<=min || root.value>=max)return false;
@@ -200,13 +227,14 @@ levelOrder() {
     isBalanced(root = this.root) {
         return this.checkHeight(root) !== -1;
     }
+    
     isb(root = this.root){
         return this.checkHeight(root) !== -1
     }
 
     checkHeight(node) {
         if (!node) return 0;
-
+       
         const leftHeight = this.checkHeight(node.left);
         if (leftHeight === -1) return -1;
 

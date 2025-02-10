@@ -15,6 +15,13 @@ var isSameTree = function(p, q) {
 
 };
 
+function isSame(p,q){
+    if(!p && !q)return true;
+    if(!p || !q)return false;
+    if(p.value !== q.value)return false;
+    return isSame(p.left,q.left) && isSame(p.right,q.right)
+}
+
 
 // // Define the trees as binary tree nodes
 // let p = new TreeNode(1, new TreeNode(2), new TreeNode(3));

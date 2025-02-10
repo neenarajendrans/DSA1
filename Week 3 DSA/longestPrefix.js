@@ -35,6 +35,8 @@ class Trie {
 
         return prefix;  // Return the longest common prefix
     }
+
+
 }
 
 // Example Usage

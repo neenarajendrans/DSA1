@@ -31,7 +31,7 @@ class Graph {
         this.adjacencyList[vertex1].delete(vertex2);
         this.adjacencyList[vertex2].delete(vertex1);
     }
-
+ 
     deleteVertex(vertex){
         if(!this.adjacencyList[vertex]){
             return 
@@ -50,6 +50,8 @@ class Graph {
             console.log(value,"=>",this.adjacencyList[value])
         }
     }
+
+ 
 
 
     // deleteEdge(vertex1,vertex2){
@@ -90,6 +92,25 @@ class Graph {
         return result;
     }
     
+bfs1(start){
+    let q = [start];
+    let v = {};
+    let curr ;
+    v[start] = true;
+    re = []
+
+    while(q.length){
+        curr = queue.shift();
+        reuslt.push(curr)
+        for(let n of this.adjacencyList[curr]){
+            if(!v[n]){
+                v[n]= true;
+                queue.push(n)
+            }
+        }
+    }
+}
+
     dfs(start){
         let queue=[start];
         let result =[];

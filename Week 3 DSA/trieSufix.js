@@ -20,7 +20,6 @@ class Trie {
             this._insertSuffix(suffix);
         }
     }
-
     // Helper method to insert suffix into the Trie
     _insertSuffix(suffix) {
         let node = this.root;

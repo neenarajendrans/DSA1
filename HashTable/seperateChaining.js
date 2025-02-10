@@ -70,78 +70,78 @@ table.remove("name");
 table.display();
 
 
-class HashTableNew {
-    constructor(size) {
-        this.size = size;
-        this.table = new Array(size);
-    }
+// class HashTableNew {
+//     constructor(size) {
+//         this.size = size;
+//         this.table = new Array(size);
+//     }
 
-    // Simple hash function
-    hash(key) {
-        let hashValue = 0;
-        for (let i = 0; i < key.length; i++) {
-            hashValue += key.charCodeAt(i);
-        }
-        return hashValue % this.size;
-    }
+//     // Simple hash function
+//     hash(key) {
+//         let hashValue = 0;
+//         for (let i = 0; i < key.length; i++) {
+//             hashValue += key.charCodeAt(i);
+//         }
+//         return hashValue % this.size;
+//     }
 
-    // Insert a key-value pair
-    insert(key, value) {
-        const index = this.hash(key);
+//     // Insert a key-value pair
+//     insert(key, value) {
+//         const index = this.hash(key);
 
-        if (!this.table[index]) {
-            this.table[index] = [];
-        }
+//         if (!this.table[index]) {
+//             this.table[index] = [];
+//         }
 
-        // Check if the key already exists in the bucket (for collision resolution)
-        for (let i = 0; i < this.table[index].length; i++) {
-            if (this.table[index][i][0] === key) {
-                this.table[index][i][1] = value; // Update value
-                return;
-            }
-        }
+//         // Check if the key already exists in the bucket (for collision resolution)
+//         for (let i = 0; i < this.table[index].length; i++) {
+//             if (this.table[index][i][0] === key) {
+//                 this.table[index][i][1] = value; // Update value
+//                 return;
+//             }
+//         }
 
-        // Add new key-value pair to the bucket
-        this.table[index].push([key, value]);
-    }
+//         // Add new key-value pair to the bucket
+//         this.table[index].push([key, value]);
+//     }
 
-    // Retrieve value by key
-    get(key) {
-        const index = this.hash(key);
-        const bucket = this.table[index];
+//     // Retrieve value by key
+//     get(key) {
+//         const index = this.hash(key);
+//         const bucket = this.table[index];
         
-        if (!bucket) return null;
+//         if (!bucket) return null;
 
-        for (let i = 0; i < bucket.length; i++) {
-            if (bucket[i][0] === key) {
-                return bucket[i][1];
-            }
-        }
-        return null;
-    }
+//         for (let i = 0; i < bucket.length; i++) {
+//             if (bucket[i][0] === key) {
+//                 return bucket[i][1];
+//             }
+//         }
+//         return null;
+//     }
 
-    // Remove key-value pair by key
-    remove(key) {
-        const index = this.hash(key);
-        const bucket = this.table[index];
+//     // Remove key-value pair by key
+//     remove(key) {
+//         const index = this.hash(key);
+//         const bucket = this.table[index];
         
-        if (!bucket) return;
+//         if (!bucket) return;
 
-        for (let i = 0; i < bucket.length; i++) {
-            if (bucket[i][0] === key) {
-                bucket.splice(i, 1); // Remove the key-value pair
-                return;
-            }
-        }
-    }
-    re(key){
-      let index = this.hash(key);
-      let bucket = this.table[index];
-      if(bucket){
-        let samKey = bucket.find(item=>item[0]===key)
-        if(samKey){
-          bucket.splice(bucket.indexOf(samKeyItem),1)
-        }
-      }
-    }
-}
+//         for (let i = 0; i < bucket.length; i++) {
+//             if (bucket[i][0] === key) {
+//                 bucket.splice(i, 1); // Remove the key-value pair
+//                 return;
+//             }
+//         }
+//     }
+//     re(key){
+//       let index = this.hash(key);
+//       let bucket = this.table[index];
+//       if(bucket){
+//         let samKey = bucket.find(item=>item[0]===key)
+//         if(samKey){
+//           bucket.splice(bucket.indexOf(samKeyItem),1)
+//         }
+//       }
+//     }
+// }

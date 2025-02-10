@@ -122,6 +122,8 @@ class Trie{
         }
 
     }
+
+   
 }
 
 let trie = new Trie();
